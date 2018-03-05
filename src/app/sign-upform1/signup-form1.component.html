@@ -1,0 +1,12 @@
+<form [formGroup] = "form">
+    <div class="form-group">
+        <input 
+            formControlName="username"
+            id="username" 
+            type="text" 
+            class="form-control">
+    </div>
+    <div *ngIf="username.pending"> checking for uniqueness </div>
+    <div *ngIf="username.touched&&username.errors.userNameError" class = "alert alert-danger">enter valid username</div>
+    <div *ngIf="username.touched&&username.errors.shouldBeUnique" class = "alert alert-danger">enter valid username</div>
+    </form>

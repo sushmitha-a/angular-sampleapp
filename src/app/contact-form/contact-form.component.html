@@ -1,0 +1,33 @@
+<form #f="ngForm">
+  <div class="form-group">
+      <label for=""></label>
+      <input ngModel type="text" class="form-control">
+  </div>
+  <div class="form-group">
+      <label for="firstname">firstname:</label>
+      <input required
+      maxlength = "14" minlength = "4" 
+      id="firstname" class="form-control" ngModel name = "firstname" #name1 = "ngModel" (change) = "validate(name1)" type="text">
+  </div>
+  <div class = "alert alert-danger" *ngIf = "name1.touched&& !name1.valid">enter valid input</div> 
+    <div class="form-group">
+    <label for="comment">
+      comment:
+    </label>
+    <textarea ngModel id="comment" class = "form-control" cols="30" rows="10"></textarea>
+  </div>
+  
+  <div class="form-group">
+    <select ngModel name = "selection" id="se" class = "form-control">
+      <option *ngFor = "let m of method" [value]="m.id">
+        {{m.value}}
+      </option>
+    </select>
+  </div>
+
+<div>
+  {{f.value| json}}
+</div>
+  <button [disabled] = "!f.valid" class="btn btn-primary">submit</button>
+</form>
+   
